@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Modularization Example</string>
+    <string name="dash">---</string>
+    <string name="error_title">Error!</string>
+    <string name="error">Error Occurred</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="title_please_provide_error">Please provide error message from server side</string>
+    <string name="title_error_code">Error code</string>
+    <string name="title_check_network_connection">Check your internet connection</string>
+</resources>

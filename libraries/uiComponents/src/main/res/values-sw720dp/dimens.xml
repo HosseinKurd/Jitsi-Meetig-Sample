@@ -1,0 +1,63 @@
+<resources>
+
+    <!--  TEXT SIZE  -->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_x_small">16sp</dimen>
+    <dimen name="text_size_2x_small">20sp</dimen>
+    <dimen name="text_size_middle">24sp</dimen>
+    <dimen name="text_size_x_middle">28sp</dimen>
+    <dimen name="text_size_2x_middle">32sp</dimen>
+    <dimen name="text_size_large">36sp</dimen>
+    <dimen name="text_size_x_large">40sp</dimen>
+    <dimen name="text_size_2x_large">44sp</dimen>
+    <dimen name="text_size_huge">48sp</dimen>
+    <dimen name="text_size_x_huge">52sp</dimen>
+    <dimen name="text_size_2x_huge">58sp</dimen>
+    <dimen name="text_size_spaced">60sp</dimen>
+    <dimen name="text_size_x_spaced">64sp</dimen>
+    <dimen name="text_size_2x_spaced">68sp</dimen>
+
+    <!--  PADDING  -->
+    <dimen name="padding_small">20dp</dimen>
+    <dimen name="padding_x_small">24dp</dimen>
+    <dimen name="padding_2x_small">28dp</dimen>
+    <dimen name="padding_middle">32dp</dimen>
+    <dimen name="padding_x_middle">36dp</dimen>
+    <dimen name="padding_2x_middle">40dp</dimen>
+    <dimen name="padding_large">44dp</dimen>
+    <dimen name="padding_x_large">48dp</dimen>
+    <dimen name="padding_2x_large">52dp</dimen>
+    <dimen name="padding_huge">56dp</dimen>
+    <dimen name="padding_x_huge">60dp</dimen>
+    <dimen name="padding_2x_huge">64dp</dimen>
+    <dimen name="padding_spaced">68dp</dimen>
+    <dimen name="padding_x_spaced">72dp</dimen>
+    <dimen name="padding_2x_spaced">76dp</dimen>
+
+    <!--  MARGIN  -->
+    <dimen name="margin_small">20dp</dimen>
+    <dimen name="margin_x_small">24dp</dimen>
+    <dimen name="margin_2x_small">28dp</dimen>
+    <dimen name="margin_medium">32dp</dimen>
+    <dimen name="margin_x_middle">36dp</dimen>
+    <dimen name="margin_2x_middle">40dp</dimen>
+    <dimen name="margin_large">44dp</dimen>
+    <dimen name="margin_x_large">48dp</dimen>
+    <dimen name="margin_2x_large">52dp</dimen>
+    <dimen name="margin_huge">56dp</dimen>
+    <dimen name="margin_x_huge">60dp</dimen>
+    <dimen name="margin_2x_huge">64dp</dimen>
+    <dimen name="margin_spaced">68dp</dimen>
+    <dimen name="margin_x_spaced">72dp</dimen>
+    <dimen name="margin_2x_spaced">76dp</dimen>
+    <dimen name="margin_3x_spaced">80dp</dimen>
+
+    <!--  HEIGHT  -->
+    <dimen name="height_small">40dp</dimen>
+    <dimen name="height_x_small">60dp</dimen>
+    <dimen name="height_medium">80dp</dimen>
+    <dimen name="height_x_medium">100dp</dimen>
+    <dimen name="height_large">120dp</dimen>
+    <dimen name="height_x_large">140dp</dimen>
+
+</resources>

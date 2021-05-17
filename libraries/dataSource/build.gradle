@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(path: ':libraries:uiComponents')
+    implementation project(path: ':libraries:utils')
+
+    implementation Deps.androidx_loader
+    implementation Deps.chatkit
+    implementation Deps.room_db
+    annotationProcessor Deps.room_db_compiler
+    annotationProcessor Deps.room_db_annotation
+
+    api Deps.lawone_sdk
+    api Deps.google_sign_in
+
+}

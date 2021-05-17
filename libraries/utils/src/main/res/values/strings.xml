@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- Permission Requests -->
+    <string name="title_permission">Access Level</string>
+    <string name="title_permission_not_granted">A needed permission was not granted</string>
+    <string name="title_need_permission">To choose a file, please grant the following permission</string>
+    <string name="title_need_permission_voice">To record voice, please grant the following permission</string>
+
+</resources>

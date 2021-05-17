@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- =================== Magical Button ProgressBar =================== -->
+    <declare-styleable name="MagicalButtonProgressBar">
+        <attr name="buttonText" format="string" />
+        <attr name="buttonBackground" format="reference" />
+        <attr name="buttonTextColor" format="reference" />
+        <attr name="buttonTextSize" format="integer" />
+        <attr name="buttonClickable" format="boolean" />
+    </declare-styleable>
+
+    <!-- =================== Magical ImageView =================== -->
+    <declare-styleable name="MagicalImageView">
+        <attr name="square_image" format="boolean" />
+        <attr name="round_image" format="boolean" />
+        <attr name="aspect_ratio" format="boolean" />
+    </declare-styleable>
+
+    <!-- =================== Magical BottomSheet =================== -->
+    <declare-styleable name="MagicalBottomSheet">
+        <attr name="backgroundTintColor" format="reference" />
+    </declare-styleable>
+
+    <!-- =================== Custom SearchBar =================== -->
+    <declare-styleable name="MaterialSearchBar">
+        //Base
+        <attr name="mt_speechMode" format="boolean" />
+        <attr name="mt_maxSuggestionsCount" format="integer" />
+        <attr name="mt_navIconEnabled" format="boolean" />
+        <attr name="mt_roundedSearchBarEnabled" format="boolean" />
+        // (API 21+ , Will Revert To Default Shape On Lower
+        <attr name="mt_menuDividerEnabled" format="boolean" />
+        <attr name="mt_dividerColor" format="color" />
+        <attr name="mt_searchBarColor" format="color" />
+        // Icons
+        <attr name="mt_menuIconDrawable" format="reference" />
+        <attr name="mt_searchIconDrawable" format="reference" />
+        <attr name="mt_speechIconDrawable" format="reference" />
+        <attr name="mt_backIconDrawable" format="reference" />
+        <attr name="mt_clearIconDrawable" format="reference" />
+        <attr name="mt_navIconTint" format="color" />
+        <attr name="mt_menuIconTint" format="color" />
+        <attr name="mt_searchIconTint" format="color" />
+        <attr name="mt_backIconTint" format="color" />
+        <attr name="mt_clearIconTint" format="color" />
+        <attr name="mt_navIconUseTint" format="boolean" />
+        <attr name="mt_menuIconUseTint" format="boolean" />
+        <attr name="mt_searchIconUseTint" format="boolean" />
+        <attr name="mt_backIconUseTint" format="boolean" />
+        <attr name="mt_clearIconUseTint" format="boolean" />
+        <attr name="mt_borderlessRippleEnabled" format="boolean" />
+        // Text
+        <attr name="mt_hint" format="string" />
+        <attr name="mt_placeholder" format="string" />
+        <attr name="mt_textColor" format="color" />
+        <attr name="mt_hintColor" format="color" />
+        <attr name="mt_placeholderColor" format="color" />
+        <attr name="mt_textCursorTint" format="color" />
+        <attr name="mt_leftTextSelectorDrawable" format="reference" />
+        <attr name="mt_middleTextSelectorDrawable" format="reference" />
+        <attr name="mt_rightTextSelectorDrawable" format="reference" />
+        <attr name="mt_leftTextSelectorTint" format="color" />
+        <attr name="mt_middleTextSelectorTint" format="color" />
+        <attr name="mt_rightTextSelectorTint" format="color" />
+        <attr name="mt_handlesTintEnabled" format="boolean" />
+        <attr name="mt_highlightedTextColor" format="color" />
+    </declare-styleable>
+
+    <!-- =================== Base Toolbar =================== -->
+    <declare-styleable name="MagicalBaseToolbar">
+        <attr name="headerType" format="enum">
+            <enum name="LOGO" value="0" />
+            <enum name="TITLE" value="1" />
+        </attr>
+        <attr name="hasBack" format="boolean" />
+        <attr name="backIcon" format="reference" />
+        <attr name="toolbarLogo" format="reference" />
+        <attr name="toolbarTitle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MagicalBaseCollapsingToolbar">
+        <attr name="collapsingHeaderType" format="enum">
+            <enum name="SEARCH_BASE" value="0" />
+            <enum name="TITLE_BASE" value="1" />
+            <enum name="PAYMENT_BASE" value="2" />
+        </attr>
+        <attr name="collapsingHasBack" format="boolean" />
+        <attr name="collapsingBackIcon" format="reference" />
+        <attr name="collapsingToolbarLogo" format="reference" />
+        <attr name="collapsingToolbarTitle" format="reference" />
+        <attr name="collapsingToolbarSubTitle" format="reference" />
+    </declare-styleable>
+
+
+    <!-- =================== Magical RecyclerView =================== -->
+    <declare-styleable name="CustomImageView">
+        <attr name="isCircle" format="boolean" />
+        <attr name="gravity" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MyCustomView">
+        <attr name="titleColor" format="color" />
+        <attr name="iconBackGroundColor" format="color" />
+        <attr name="subtitleColor" format="color" />
+        <attr name="retryButtonColor" format="color" />
+        <attr name="retryButtonTextColor" format="color" />
+        <attr name="emptyTitle" format="string" />
+        <attr name="enableSwipe" format="boolean" />
+    </declare-styleable>
+
+</resources>

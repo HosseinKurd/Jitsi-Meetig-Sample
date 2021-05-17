@@ -1,0 +1,5 @@
+<resources translatable="false">
+    <string name="share_subject">Shared color hex</string>
+    <string name="share_using">Share Via :</string>
+    <string name="share_text">Color is : %1$s</string>
+</resources>

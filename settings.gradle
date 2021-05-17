@@ -1,0 +1,9 @@
+rootProject.name = "Jitsi Meetig Sample"
+include ':app'
+
+include ':features:dashboard'
+
+include ':libraries:dataSource'
+include ':libraries:models'
+include ':libraries:uiComponents'
+include ':libraries:utils'

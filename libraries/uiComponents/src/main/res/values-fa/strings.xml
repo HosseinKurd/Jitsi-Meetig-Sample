@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Modularization Example</string>
+    <string name="dash">---</string>
+    <string name="error_title">خطا!</string>
+    <string name="error">خطایی رخ داده است!</string>
+    <string name="submit">ثبت</string>
+    <string name="cancel">لغو</string>
+    <string name="ok">تایید</string>
+    <string name="title_please_provide_error">متن خطای مناسب برای نمایش یافت نشد</string>
+    <string name="title_error_code">کد خطا</string>
+    <string name="title_check_network_connection">اتصال اینترنت خود را بررسی نمایید</string>
+</resources>

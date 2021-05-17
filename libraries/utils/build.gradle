@@ -1,0 +1,18 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation Deps.lifecycle_runtime
+    implementation Deps.persian_date
+    implementation Deps.androidx_core
+    implementation Deps.androidx_fragment
+
+}

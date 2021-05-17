@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(path: ':libraries:utils')
+
+    implementation Deps.spinKit
+
+    api Deps.androidx_core
+    api Deps.androidx_appcompat
+    api Deps.androidx_material
+    api Deps.androidx_fragment_ktx
+    api Deps.androidx_annotation
+    api Deps.androidx_recyclerview
+    api Deps.androidx_swipe_refresh
+    api Deps.alerter
+    api Deps.glide_bumptech
+    api Deps.glide_bumptech_compiler
+    api Deps.easy_image
+    api Deps.androidx_constraintlayout
+    api Deps.mkLoader
+    api Deps.lifecycle_runtime
+    api Deps.androidx_drawerlayout
+    api Deps.lifecycle_extensions
+    api Deps.androidx_fragment
+    api Deps.nav_ui
+    api Deps.nav_fragment
+    api Deps.chatkit
+
+}

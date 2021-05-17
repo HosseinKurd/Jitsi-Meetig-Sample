@@ -1,0 +1,94 @@
+<resources>
+
+    <!-- =================== AppTheme ============================= -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AppTheme.FullScreen" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <!-- =================== Button ============================= -->
+    <style name="AppTheme.Button.Base" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_middle</item>
+        <item name="android:padding">@dimen/padding_middle</item>
+        <item name="android:layout_margin">@dimen/margin_medium</item>
+        <item name="android:fontFamily">@font/app_font</item>
+    </style>
+
+    <style name="AppTheme.Button.Round" parent="AppTheme.Button.Base">
+<!--        <item name="android:background">@drawable/shape_gradient_base_oval</item>-->
+    </style>
+
+    <style name="AppTheme.Button.Rectangle" parent="AppTheme.Button.Base">
+<!--        <item name="android:background">@drawable/shape_gradient_base_rectangle</item>-->
+    </style>
+
+    <style name="AppTheme.Button.Borderless" parent="AppTheme.Button.Base">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+
+    <!-- =================== Button with ProgressBar ============================= -->
+    <style name="AppTheme.ButtonProgressBar.Base" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_middle</item>
+        <item name="android:fontFamily">@font/app_font</item>
+    </style>
+
+    <style name="AppTheme.ButtonProgressBar.Round" parent="AppTheme.ButtonProgressBar.Base">
+<!--        <item name="android:background">@drawable/shape_gradient_base_oval</item>-->
+    </style>
+
+    <style name="AppTheme.ButtonProgressBar.Rectangle" parent="AppTheme.ButtonProgressBar.Base">
+<!--        <item name="android:background">@drawable/shape_gradient_base_rectangle</item>-->
+    </style>
+
+
+    <!-- =================== TextView ============================= -->
+    <style name="AppTheme.TextView.Base" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="fontStyle">normal</item>
+    </style>
+
+    <style name="AppTheme.TextView.Headline1" parent="AppTheme.TextView.Base">
+        <item name="android:textSize">@dimen/text_size_spaced</item>
+    </style>
+
+    <style name="AppTheme.TextView.Headline2" parent="AppTheme.TextView.Base">
+        <item name="android:textSize">@dimen/text_size_huge</item>
+    </style>
+
+    <style name="AppTheme.TextView.Headline3" parent="AppTheme.TextView.Base">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="AppTheme.TextView.Headline4" parent="AppTheme.TextView.Base">
+        <item name="android:textSize">@dimen/text_size_middle</item>
+    </style>
+
+    <style name="AppTheme.TextView.Headline5" parent="AppTheme.TextView.Base">
+        <item name="android:textSize">@dimen/text_size_x_small</item>
+    </style>
+
+    <!-- =================== Magical Alerter ============================= -->
+    <style name="AppTheme.AlerterTextView.Base" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="fontStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_middle</item>
+    </style>
+
+</resources>
