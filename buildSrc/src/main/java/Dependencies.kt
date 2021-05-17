@@ -72,6 +72,7 @@ object Versions {
     const val mkLoader_version = "1.4.0"
     const val lawone_sdk_version = "1.2.290"
     const val easy_image_version = "3.2.0"
+    const val jitsi_meet_sdk_version = "2.11.0"
 
 }
 
@@ -140,4 +141,5 @@ object Deps {
     const val persian_date = "com.github.samanzamani.persiandate:PersianDate:${Versions.persian_date_converter_version}"
     const val mkLoader = "com.tuyenmonkey:mkloader:${Versions.mkLoader_version}"
     const val easy_image = "com.github.jkwiecien:EasyImage:${Versions.easy_image_version}"
+    const val jitsi_meet_sdk = "org.jitsi.react:jitsi-meet-sdk:${Versions.jitsi_meet_sdk_version}"
 }

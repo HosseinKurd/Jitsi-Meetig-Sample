@@ -22,10 +22,11 @@ allprojects {
     repositories {
         google()
         jcenter() // Warning: this repository is going to shut down soon
+        mavenCentral()
         maven { url 'https://jitpack.io' }
         maven { url "https://maven.google.com" }
-        mavenCentral()
         maven { url 'https://archive.vaslapp.com/repository/maven-releases/' }
+        maven { url 'https://github.com/jitsi/jitsi-maven-repository/raw/master/releases' }
     }
 }
 
