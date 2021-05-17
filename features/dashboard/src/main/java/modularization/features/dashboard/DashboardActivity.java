@@ -3,14 +3,18 @@ package modularization.features.dashboard;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+
+import com.facebook.react.modules.core.PermissionListener;
 
 import org.jitsi.meet.sdk.JitsiMeetActivity;
+import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
 
 import java.util.Objects;
 
 import modularization.features.dashboard.preview.JoinFrg;
 
-public class DashboardActivity extends JitsiMeetActivity {// JitsiMeetActivity
+public class DashboardActivity extends FragmentActivity implements JitsiMeetActivityInterface {// JitsiMeetActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +24,10 @@ public class DashboardActivity extends JitsiMeetActivity {// JitsiMeetActivity
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment, Objects.requireNonNull(JoinFrg.Companion.getInstance()))
                 .commit();
+    }
+
+    @Override
+    public void requestPermissions(String[] strings, int i, PermissionListener permissionListener) {
+
     }
 }

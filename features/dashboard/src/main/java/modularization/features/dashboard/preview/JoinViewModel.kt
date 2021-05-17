@@ -10,7 +10,7 @@ class JoinViewModel : ViewModel() {
     private val _liveData = MutableLiveData<String>()
     val liveData: LiveData<String> = _liveData
 
-    fun setColorValue(colorValue: String) {
+    fun setLiveData(colorValue: String) {
         _liveData.value = colorValue
     }
 
