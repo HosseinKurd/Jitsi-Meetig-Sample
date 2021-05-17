@@ -20,9 +20,9 @@ dependencies {
 
     implementation Deps.androidx_loader
     implementation Deps.chatkit
-    implementation Deps.room_db
-    annotationProcessor Deps.room_db_compiler
-    annotationProcessor Deps.room_db_annotation
+    // implementation Deps.room_db
+    // kapt Deps.room_db_compiler
+    // annotationProcessor Deps.room_db_annotation
 
     api Deps.lawone_sdk
     api Deps.google_sign_in

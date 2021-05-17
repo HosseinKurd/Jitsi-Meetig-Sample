@@ -16,7 +16,7 @@ import modularization.libraries.utils.helpers.LocaleHelper;
 
 public abstract class BaseFragmentBinding<B extends ViewDataBinding> extends Fragment {
 
-    protected final String TAG = getClass().getSimpleName()+"_TAG";
+    protected final String TAG = getClass().getSimpleName() + "_TAG";
 
     protected B binding;
 

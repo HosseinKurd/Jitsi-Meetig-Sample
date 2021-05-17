@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import modularization.features.dashboard.preview.CameraFrg;
+import modularization.features.dashboard.preview.JoinFrg;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -13,7 +13,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, CameraFrg.Companion.getInstance())
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, JoinFrg.Companion.getInstance())
                 .commit();
     }
 }
