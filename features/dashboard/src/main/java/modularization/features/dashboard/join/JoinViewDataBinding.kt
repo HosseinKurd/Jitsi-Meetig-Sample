@@ -1,10 +1,10 @@
-package modularization.features.dashboard.preview
+package modularization.features.dashboard.join
 
 import android.view.View
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.ViewDataBinding
 
-class CameraViewDataBinding(
+class JoinViewDataBinding(
     bindingComponent: DataBindingComponent?,
     root: View?,
     localFieldCount: Int

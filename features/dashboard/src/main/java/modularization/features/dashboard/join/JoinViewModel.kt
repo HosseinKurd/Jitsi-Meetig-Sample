@@ -1,4 +1,4 @@
-package modularization.features.dashboard.preview
+package modularization.features.dashboard.join
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -17,4 +17,5 @@ class JoinViewModel : ViewModel() {
     fun submit(context: Context) {
 
     }
+
 }

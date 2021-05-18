@@ -2,17 +2,15 @@ package modularization.features.dashboard;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import com.facebook.react.modules.core.PermissionListener;
 
-import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
 
 import java.util.Objects;
 
-import modularization.features.dashboard.preview.JoinFrg;
+import modularization.features.dashboard.join.JoinFrg;
 
 public class DashboardActivity extends FragmentActivity implements JitsiMeetActivityInterface {// JitsiMeetActivity
 
