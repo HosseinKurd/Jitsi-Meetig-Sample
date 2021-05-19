@@ -1,4 +1,4 @@
-package modularization.features.dashboard.meet
+package modularization.features.dashboard.settings
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,27 +8,26 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import modularization.features.dashboard.R
-import modularization.features.dashboard.join.JoinViewDataBinding
 import modularization.libraries.uicomponents.baseClasses.BaseFragmentBinding
 
-class MeetFrg : BaseFragmentBinding<MeetViewDataBinding>() {
+class SettingsFrg : BaseFragmentBinding<SettingsViewDataBinding>() {
 
     companion object {
         @SuppressLint("StaticFieldLeak")
-        var instance: MeetFrg? = null
+        var instance: SettingsFrg? = null
             get() {
                 if (field == null) {
-                    field = MeetFrg()
+                    field = SettingsFrg()
                 }
                 return field
             }
     }
 
     /** ViewModel related to Fragment*/
-    private lateinit var viewModel: MeetViewModel
+    private lateinit var viewModel: SettingsViewModel
 
     override fun getLayoutResourceId(): Int {
-        return R.layout.fragment_meeting
+        return R.layout.fragment_settings
     }
 
     override fun onCreateView(
@@ -36,7 +35,7 @@ class MeetFrg : BaseFragmentBinding<MeetViewDataBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(MeetViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
         return inflater.inflate(layoutResourceId, container, false).apply {
             viewModel.liveData.observe(viewLifecycleOwner, Observer {
                 val item = it ?: return@Observer

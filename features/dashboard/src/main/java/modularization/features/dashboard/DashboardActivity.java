@@ -1,39 +1,49 @@
 package modularization.features.dashboard;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.fragment.app.Fragment;
 
-import org.jitsi.meet.sdk.BroadcastEvent;
-import org.jitsi.meet.sdk.BroadcastIntentHelper;
-import org.jitsi.meet.sdk.JitsiMeet;
-import org.jitsi.meet.sdk.JitsiMeetActivity;
-import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Objects;
 
+import modularization.features.dashboard.interfaces.OnNavigate;
 import modularization.features.dashboard.join.JoinFrg;
-import modularization.libraries.uicomponents.MagicalEditText;
-import timber.log.Timber;
+import modularization.features.dashboard.meet.MeetFrg;
+import modularization.features.dashboard.settings.SettingsFrg;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity implements OnNavigate {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        onNavigated(1);
+    }
+
+    private void onNavigate(@NonNull Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment, Objects.requireNonNull(JoinFrg.Companion.getInstance()))
+                .replace(R.id.fragment, fragment)
                 .commit();
+    }
+
+    @Override
+    public void onNavigated(int page) {
+        switch (page) {
+            case 1:
+                onNavigate(Objects.requireNonNull(JoinFrg.Companion.getInstance()));
+                break;
+            case 2:
+                onNavigate(Objects.requireNonNull(SettingsFrg.Companion.getInstance()));
+                break;
+            case 3:
+                onNavigate(Objects.requireNonNull(MeetFrg.Companion.getInstance()));
+                break;
+            case 4:
+                onNavigate(Objects.requireNonNull(JoinFrg.Companion.getInstance()));
+                break;
+        }
     }
 }

@@ -8,10 +8,12 @@ import android.content.IntentFilter
 import android.hardware.camera2.*
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import modularization.features.dashboard.R
+import modularization.features.dashboard.interfaces.OnNavigate
 import modularization.libraries.uicomponents.MagicalEditText
 import modularization.libraries.uicomponents.baseClasses.BaseFragmentBinding
 import modularization.libraries.utils.Logger
@@ -86,7 +88,8 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         viewModel = ViewModelProvider(this).get(JoinViewModel::class.java)
         return inflater.inflate(layoutResourceId, container, false).apply {
             edtMeeting = findViewById(R.id.edt_meeting)
-            findViewById<View>(R.id.btn_submit).setOnClickListener { onButtonClick() }
+            findViewById<View>(R.id.btn_submit).setOnClickListener { onSubmitClicked() }
+            findViewById<View>(R.id.btn_settings).setOnClickListener { onSettingsClicked() }
             viewModel.liveData.observe(viewLifecycleOwner, Observer {
                 val item = it ?: return@Observer
             })
@@ -118,13 +121,14 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         registerForBroadcastMessages()
     }
 
-    fun onButtonClick() {
-        val text = edtMeeting.text.toString()
-        if (text.length > 0) {
+    fun onSubmitClicked() {
+        if (edtMeeting.text.toString().isEmpty()) {
+            Toast.makeText(requireContext(), R.string.empty_meeting_name, Toast.LENGTH_LONG).show()
+        } else {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
             val options = JitsiMeetConferenceOptions.Builder()
-                .setRoom(text)
+                .setRoom(edtMeeting.text.toString())
                 // Settings for audio and video
                 //.setAudioMuted(true)
                 //.setVideoMuted(true)
@@ -133,6 +137,11 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             // of creating the required Intent and passing the options.
             JitsiMeetActivity.launch(requireContext(), options)
         }
+    }
+
+    fun onSettingsClicked() {
+        if (requireActivity() is OnNavigate)
+            (requireActivity() as OnNavigate).onNavigated(2)
     }
 
     private fun registerForBroadcastMessages() {

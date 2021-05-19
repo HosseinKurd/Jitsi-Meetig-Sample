@@ -5,7 +5,9 @@
     <string name="error">Error Occurred</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
+    <string name="settings">Settings</string>
+    <string name="empty_meeting_name">Metting name can not be empty</string>
     <string name="title_please_provide_error">Please provide error message from server side</string>
     <string name="title_error_code">Error code</string>
     <string name="title_check_network_connection">Check your internet connection</string>
