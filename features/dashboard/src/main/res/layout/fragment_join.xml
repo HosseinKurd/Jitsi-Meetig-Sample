@@ -9,7 +9,7 @@
     tools:context=".DashboardActivity">
 
     <modularization.libraries.uicomponents.MagicalEditText
-        android:id="@+id/txt_meeting"
+        android:id="@+id/edt_meeting"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@drawable/dr_box"
@@ -28,11 +28,12 @@
         android:layout_marginTop="@dimen/_10dp"
         android:background="@drawable/dr_clickable"
         android:gravity="center"
+        android:onClick="onButtonClick"
         android:text="@string/submit"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_meeting"
+        app:layout_constraintTop_toBottomOf="@+id/edt_meeting"
         app:layout_constraintWidth_percent="0.6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,18 +1,31 @@
 package modularization.features.dashboard;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
-import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.facebook.react.modules.core.PermissionListener;
+import org.jitsi.meet.sdk.BroadcastEvent;
+import org.jitsi.meet.sdk.BroadcastIntentHelper;
+import org.jitsi.meet.sdk.JitsiMeet;
+import org.jitsi.meet.sdk.JitsiMeetActivity;
+import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 
-import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
-
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Objects;
 
 import modularization.features.dashboard.join.JoinFrg;
+import modularization.libraries.uicomponents.MagicalEditText;
+import timber.log.Timber;
 
-public class DashboardActivity extends FragmentActivity implements JitsiMeetActivityInterface {// JitsiMeetActivity
+public class DashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +35,5 @@ public class DashboardActivity extends FragmentActivity implements JitsiMeetActi
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment, Objects.requireNonNull(JoinFrg.Companion.getInstance()))
                 .commit();
-    }
-
-    @Override
-    public void requestPermissions(String[] strings, int i, PermissionListener permissionListener) {
-
     }
 }

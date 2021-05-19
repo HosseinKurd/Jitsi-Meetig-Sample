@@ -72,7 +72,7 @@ object Versions {
     const val mkLoader_version = "1.4.0"
     const val lawone_sdk_version = "1.2.290"
     const val easy_image_version = "3.2.0"
-    const val jitsi_meet_sdk_version = "2.11.0"
+    const val jitsi_meet_sdk_version = "3.0.0"
 
 }
 
