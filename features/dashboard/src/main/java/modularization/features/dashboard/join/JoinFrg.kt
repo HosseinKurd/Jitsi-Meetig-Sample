@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import modularization.features.dashboard.R
+import modularization.features.dashboard.configs.Meeting
 import modularization.features.dashboard.interfaces.OnNavigate
 import modularization.libraries.uicomponents.MagicalEditText
 import modularization.libraries.uicomponents.baseClasses.BaseFragmentBinding
@@ -130,8 +131,10 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             val options = JitsiMeetConferenceOptions.Builder()
                 .setRoom(edtMeeting.text.toString())
                 // Settings for audio and video
-                //.setAudioMuted(true)
-                //.setVideoMuted(true)
+                .setAudioOnly(Meeting.config.isAudioOnly)
+                .setAudioMuted(Meeting.config.isAudioMuted)
+                .setVideoMuted(Meeting.config.isVideoMuted)
+                .setWelcomePageEnabled(Meeting.config.isWelcomePageEnabled)
                 .build()
             // Launch the new activity with the given options. The launch() method takes care
             // of creating the required Intent and passing the options.

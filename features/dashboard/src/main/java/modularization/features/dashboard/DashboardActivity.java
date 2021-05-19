@@ -15,6 +15,17 @@ import modularization.features.dashboard.settings.SettingsFrg;
 
 public class DashboardActivity extends AppCompatActivity implements OnNavigate {
 
+    private int page = 0;
+
+    @Override
+    public void onBackPressed() {
+        if (page == 2) {
+            onNavigated(1);
+            return;
+        }
+        super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +42,7 @@ public class DashboardActivity extends AppCompatActivity implements OnNavigate {
 
     @Override
     public void onNavigated(int page) {
+        this.page = page;
         switch (page) {
             case 1:
                 onNavigate(Objects.requireNonNull(JoinFrg.Companion.getInstance()));

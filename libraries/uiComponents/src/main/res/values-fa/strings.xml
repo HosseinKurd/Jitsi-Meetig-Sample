@@ -8,6 +8,10 @@
     <string name="ok">تایید</string>
     <string name="settings">تنظیمات</string>
     <string name="empty_meeting_name">نام نشست نمی تواند خالی باشد</string>
+    <string name="only_audio">فقط ارتباط صوتی</string>
+    <string name="mute_audio">غیرفعال کردن صدا</string>
+    <string name="mute_video">غیرفعال کردن تصویر</string>
+    <string name="enable_welcome_page">نمایش صفحه خوش آمد گویی</string>
     <string name="title_please_provide_error">متن خطای مناسب برای نمایش یافت نشد</string>
     <string name="title_error_code">کد خطا</string>
     <string name="title_check_network_connection">اتصال اینترنت خود را بررسی نمایید</string>

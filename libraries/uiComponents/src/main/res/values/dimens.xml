@@ -1,6 +1,8 @@
 <resources>
     <dimen name="adapter_color_item_width">120dp</dimen>
     <dimen name="_10dp">10dp</dimen>
+    <dimen name="_margin_start_end">8dp</dimen>
+    <dimen name="_margin_top_bottom">4dp</dimen>
     <dimen name="_radius">10dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->

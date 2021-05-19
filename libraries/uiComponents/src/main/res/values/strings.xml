@@ -8,6 +8,10 @@
     <string name="ok">OK</string>
     <string name="settings">Settings</string>
     <string name="empty_meeting_name">Metting name can not be empty</string>
+    <string name="only_audio">only audio</string>
+    <string name="mute_audio">Mute audio</string>
+    <string name="mute_video">Mute Video</string>
+    <string name="enable_welcome_page">Enable Welcome Page</string>
     <string name="title_please_provide_error">Please provide error message from server side</string>
     <string name="title_error_code">Error code</string>
     <string name="title_check_network_connection">Check your internet connection</string>
