@@ -10,7 +10,6 @@ import java.util.Objects;
 
 import modularization.features.dashboard.interfaces.OnNavigate;
 import modularization.features.dashboard.join.JoinFrg;
-import modularization.features.dashboard.meet.MeetFrg;
 import modularization.features.dashboard.settings.SettingsFrg;
 
 public class DashboardActivity extends AppCompatActivity implements OnNavigate {
@@ -51,7 +50,7 @@ public class DashboardActivity extends AppCompatActivity implements OnNavigate {
                 onNavigate(Objects.requireNonNull(SettingsFrg.Companion.getInstance()));
                 break;
             case 3:
-                onNavigate(Objects.requireNonNull(MeetFrg.Companion.getInstance()));
+                // onNavigate(Objects.requireNonNull(MeetFrg.Companion.getInstance()));
                 break;
             case 4:
                 onNavigate(Objects.requireNonNull(JoinFrg.Companion.getInstance()));

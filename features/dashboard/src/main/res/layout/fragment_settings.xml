@@ -64,4 +64,15 @@
         app:layout_constraintTop_toBottomOf="@+id/chk_video_mute"
         app:layout_constraintWidth_percent="0.5" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/adapter_feature_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chk_welcome_page" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
