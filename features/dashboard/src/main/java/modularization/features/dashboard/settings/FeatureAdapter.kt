@@ -10,9 +10,9 @@ import modularization.libraries.dataSource.models.FeatureAdapterItem
 import modularization.libraries.uicomponents.MagicalTextView
 import modularization.libraries.uicomponents.baseClasses.RcvBaseAdapter
 
-class FeatureAdapter(context: Context, items: MutableList<FeatureAdapterItem<Boolean>>) :
+class FeatureAdapter(context: Context, items: MutableList<FeatureAdapterItem>) :
 
-    RcvBaseAdapter<FeatureAdapter.ViewHolder, FeatureAdapterItem<Boolean>>(context, items) {
+    RcvBaseAdapter<FeatureAdapter.ViewHolder, FeatureAdapterItem>(context, items) {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtDesctiption: MagicalTextView =
@@ -23,6 +23,10 @@ class FeatureAdapter(context: Context, items: MutableList<FeatureAdapterItem<Boo
             txtDesctiption.text = getItem(position).description
             checkBox.text = getItem(position).featureFlag.key
             checkBox.isChecked = getItem(position).featureFlag.value
+            checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+                getItem(position).featureFlag.value = isChecked
+                onItemClickListener?.onClicked(buttonView.id, position, getItem(position))
+            }
         }
     }
 
@@ -33,6 +37,6 @@ class FeatureAdapter(context: Context, items: MutableList<FeatureAdapterItem<Boo
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(holder.absoluteAdapterPosition)
+        holder.onBind(holder.adapterPosition)
     }
 }

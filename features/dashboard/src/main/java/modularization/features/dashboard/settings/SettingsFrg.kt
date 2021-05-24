@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import modularization.features.dashboard.R
 import modularization.features.dashboard.configs.Meeting
 import modularization.libraries.dataSource.models.FeatureAdapterItem
-import modularization.libraries.dataSource.models.FeatureFlags
 import modularization.libraries.uicomponents.baseClasses.BaseFragmentBinding
 import modularization.libraries.uicomponents.baseClasses.RcvBaseAdapter
 import modularization.libraries.utils.Logger
@@ -46,7 +45,7 @@ class SettingsFrg : BaseFragmentBinding<SettingsViewDataBinding>() {
     ): View? {
         viewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
         return inflater.inflate(layoutResourceId, container, false).apply {
-            findViewById<CheckBox>(R.id.chk_audio_only).setOnCheckedChangeListener { buttonView, isChecked ->
+            /*findViewById<CheckBox>(R.id.chk_audio_only).setOnCheckedChangeListener { buttonView, isChecked ->
                 Meeting.config.isAudioOnly = isChecked
             }
             findViewById<CheckBox>(R.id.chk_audio_mute).setOnCheckedChangeListener { buttonView, isChecked ->
@@ -57,26 +56,34 @@ class SettingsFrg : BaseFragmentBinding<SettingsViewDataBinding>() {
             }
             findViewById<CheckBox>(R.id.chk_welcome_page).setOnCheckedChangeListener { buttonView, isChecked ->
                 Meeting.config.isWelcomePageEnabled = isChecked
-            }
+            }*/
             viewModel.liveData.observe(viewLifecycleOwner, Observer {
                 val item = it ?: return@Observer
             })
             val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
             recyclerView.apply {
-                val features = mutableListOf<FeatureAdapterItem<Boolean>>()
-                features.addAll(getFeatures())
-                val featureAdapter: FeatureAdapter = FeatureAdapter(requireContext(), features)
+                val featureAdapter = FeatureAdapter(requireContext(), Meeting.features)
                 featureAdapter.onItemClickListener =
-                    object : RcvBaseAdapter.OnItemClickListener<FeatureAdapterItem<Boolean>> {
+                    object : RcvBaseAdapter.OnItemClickListener<FeatureAdapterItem> {
                         override fun onClicked(
                             actionId: Int,
                             position: Int,
-                            item: FeatureAdapterItem<Boolean>,
+                            item: FeatureAdapterItem,
                         ) {
                             Logger.w(
                                 TAG,
                                 "Position: $position , Item: $item"
                             )
+                            Meeting.features.forEach { value ->
+                                if (value.featureFlag.key == item.featureFlag.key) {
+                                    Logger.w(
+                                        TAG,
+                                        "Key: ${value.featureFlag.key} , Value: ${value.featureFlag.value} , New Value: ${item.featureFlag.value}"
+                                    )
+                                    value.featureFlag.value = item.featureFlag.value
+                                    // featureAdapter.notifyItemChanged(position)
+                                }
+                            }
                         }
                     }
                 adapter = featureAdapter
@@ -84,41 +91,6 @@ class SettingsFrg : BaseFragmentBinding<SettingsViewDataBinding>() {
             }
 
             LinearSnapHelper().attachToRecyclerView(recyclerView)
-        }
-    }
-
-    private fun getFeatures(): MutableList<FeatureAdapterItem<Boolean>> {
-        return mutableListOf<FeatureAdapterItem<Boolean>>().apply {
-            add(
-                FeatureAdapterItem(
-                    FeatureFlags.addPeopleEnabled,
-                    "Flag indicating if add-people functionality should be enabled. \n Default: disabled (true)"
-                )
-            )
-            add(
-                FeatureAdapterItem(
-                    FeatureFlags.audioFocusDisabled,
-                    "Flag indicating if the SDK should not require the audio focus. \n Used by apps that do not use Jitsi audio. \n Default: disabled (false)"
-                )
-            )
-            add(
-                FeatureAdapterItem(
-                    FeatureFlags.audioMuteEnabled,
-                    "Flag indicating if the audio mute button should be displayed. \n Default: enabled (true)."
-                )
-            )
-            add(
-                FeatureAdapterItem(
-                    FeatureFlags.audioOnlyEnabled,
-                    "Flag indicating that the Audio only button in the overflow menu is enabled. \n Default: enabled (true)."
-                )
-            )
-            add(
-                FeatureAdapterItem(
-                    FeatureFlags.calendarEnabled,
-                    "Flag indicating that the Audio only button in the overflow menu is enabled. \n Default: enabled (true)."
-                )
-            )
         }
     }
 }

@@ -15,8 +15,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <modularization.libraries.uicomponents.MagicalTextView
         android:id="@+id/txt_feature_adapter"
@@ -24,7 +23,6 @@
         android:layout_height="48dp"
         android:layout_marginTop="@dimen/_margin_top_bottom"
         android:layout_marginEnd="@dimen/_margin_start_end"
-        android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
