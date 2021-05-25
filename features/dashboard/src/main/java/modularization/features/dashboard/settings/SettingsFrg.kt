@@ -62,6 +62,7 @@ class SettingsFrg : BaseFragmentBinding<SettingsViewDataBinding>() {
             })
             val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
             recyclerView.apply {
+                val features = mutableListOf<FeatureAdapterItem>()
                 val featureAdapter = FeatureAdapter(requireContext(), Meeting.features)
                 featureAdapter.onItemClickListener =
                     object : RcvBaseAdapter.OnItemClickListener<FeatureAdapterItem> {

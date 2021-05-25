@@ -9,23 +9,31 @@ import modularization.features.dashboard.R
 import modularization.libraries.dataSource.models.FeatureAdapterItem
 import modularization.libraries.uicomponents.MagicalTextView
 import modularization.libraries.uicomponents.baseClasses.RcvBaseAdapter
+import modularization.libraries.utils.Logger
 
 class FeatureAdapter(context: Context, items: MutableList<FeatureAdapterItem>) :
 
     RcvBaseAdapter<FeatureAdapter.ViewHolder, FeatureAdapterItem>(context, items) {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val txtDesctiption: MagicalTextView =
+        private val txtDescription: MagicalTextView =
             itemView.findViewById(R.id.txt_feature_adapter)
         private val checkBox: CheckBox = itemView.findViewById(R.id.chk_feature_adapter)
 
         fun onBind(position: Int) {
-            txtDesctiption.text = getItem(position).description
+            Logger.w(
+                "TAG_TAG",
+                "Position: $position , Item: ${getItem(position)}"
+            )
+            // txtDescription.text = getItem(position).description
             checkBox.text = getItem(position).featureFlag.key
+            checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+
+            }
             checkBox.isChecked = getItem(position).featureFlag.value
             checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
                 getItem(position).featureFlag.value = isChecked
-                onItemClickListener?.onClicked(buttonView.id, position, getItem(position))
+                // onItemClickListener?.onClicked(buttonView.id, position, getItem(position))
             }
         }
     }
@@ -37,6 +45,6 @@ class FeatureAdapter(context: Context, items: MutableList<FeatureAdapterItem>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(holder.adapterPosition)
+        holder.onBind(position)
     }
 }
