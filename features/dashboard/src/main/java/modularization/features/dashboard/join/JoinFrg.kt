@@ -61,13 +61,18 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             when (event.type) {
                 BroadcastEvent.Type.CONFERENCE_JOINED -> Logger.w(
                     TAG, "Conference Joined with url : ${event.data.get("url")}"
-
                 )
                 BroadcastEvent.Type.PARTICIPANT_JOINED -> Logger.w(
                     TAG, "Participant joined : ${event.data.get("name")}"
                 )
+                BroadcastEvent.Type.ENDPOINT_TEXT_MESSAGE_RECEIVED -> Logger.w(
+                    TAG, "Text message received : ${event.data.get("text")}"
+                )
+                BroadcastEvent.Type.CHAT_MESSAGE_RECEIVED -> Logger.w(
+                    TAG, "Chat message received : ${event.data.get("text")}"
+                )
                 else -> Logger.w(
-                    TAG, "Undefined joined : ${event.data}"
+                    TAG, "Undefined joined : ${event.data}" + "\n" + "Type : ${event.type}}"
                 )
             }
         }
@@ -312,6 +317,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             //.setFeatureFlag("filmstrip.enabled", false)
             .setWelcomePageEnabled(false)
             .build()
+
         JitsiMeet.setDefaultConferenceOptions(defaultOptions)
 
         registerForBroadcastMessages()
@@ -324,13 +330,14 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         } else {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
-            val options = JitsiMeetConferenceOptions.Builder()
-                .setRoom(edtMeeting.text.toString())
-                // Settings for audio and video
-                /*.setAudioOnly(Meeting.config.isAudioOnly)
-                .setAudioMuted(Meeting.config.isAudioMuted)
-                .setVideoMuted(Meeting.config.isVideoMuted)
-                .setWelcomePageEnabled(Meeting.config.isWelcomePageEnabled)*/
+            val options = JitsiMeetConferenceOptions.Builder().setRoom(edtMeeting.text.toString())
+            // Settings for audio and video
+            /*
+            .setAudioOnly(Meeting.config.isAudioOnly)
+            .setAudioMuted(Meeting.config.isAudioMuted)
+            .setVideoMuted(Meeting.config.isVideoMuted)
+            .setWelcomePageEnabled(Meeting.config.isWelcomePageEnabled)
+            */
             Meeting.features.forEach { value ->
                 options.setFeatureFlag(value.featureFlag.key, value.featureFlag.value)
             }
@@ -346,17 +353,26 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
     }
 
     private fun registerForBroadcastMessages() {
+
+        Logger.w(
+            TAG, "start registerForBroadcastMessages()"
+        )
+
         val intentFilter = IntentFilter()
 
-        /* This registers for every possible event sent from JitsiMeetSDK
+        /*
+        This registers for every possible event sent from JitsiMeetSDK
            If only some of the events are needed, the for loop can be replaced
            with individual statements:
            ex:  intentFilter.addAction(BroadcastEvent.Type.AUDIO_MUTED_CHANGED.action);
                 intentFilter.addAction(BroadcastEvent.Type.CONFERENCE_TERMINATED.action);
                 ... other events
-         */
+        */
         for (type in BroadcastEvent.Type.values()) {
             intentFilter.addAction(type.action)
+            Logger.w(
+                TAG, "registered actions -> " + type.action
+            )
         }
         LocalBroadcastManager.getInstance(requireContext())
             .registerReceiver(broadcastReceiver, intentFilter)
