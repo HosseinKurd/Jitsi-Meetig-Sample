@@ -12,5 +12,6 @@ dependencies {
     implementation project(path: ':libraries:uiComponents')
     implementation project(path: ':libraries:utils')
     implementation project(path: ':libraries:dataSource')
-    implementation (Deps.jitsi_meet_sdk) { transitive = true }
+    
+    implementation(Deps.jitsi_meet_sdk) { transitive = true }
 }

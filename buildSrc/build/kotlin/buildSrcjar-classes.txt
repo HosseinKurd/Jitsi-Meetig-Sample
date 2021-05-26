@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 C:\Users\Vasl Dev\AndroidStudioProjects\JitsiMeetigSample\buildSrc\build\classes\kotlin\main\Configs.class;C:\Users\Vasl Dev\AndroidStudioProjects\JitsiMeetigSample\buildSrc\build\classes\kotlin\main\Deps.class;C:\Users\Vasl Dev\AndroidStudioProjects\JitsiMeetigSample\buildSrc\build\classes\kotlin\main\Versions.class
+=======
+/Users/reza/AndroidStudioProjects/JitsiMeetigSample/buildSrc/build/classes/kotlin/main/Configs.class:/Users/reza/AndroidStudioProjects/JitsiMeetigSample/buildSrc/build/classes/kotlin/main/Deps.class:/Users/reza/AndroidStudioProjects/JitsiMeetigSample/buildSrc/build/classes/kotlin/main/Versions.class
+>>>>>>> 16453c2f6ef066686185ff598ec7d3f0fcdb7c8d
