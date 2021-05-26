@@ -323,12 +323,6 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             // one we set earlier and this one when joining.
             val options = JitsiMeetConferenceOptions.Builder().setRoom(edtMeeting.text.toString())
             // Settings for audio and video
-            /*
-            .setAudioOnly(Meeting.config.isAudioOnly)
-            .setAudioMuted(Meeting.config.isAudioMuted)
-            .setVideoMuted(Meeting.config.isVideoMuted)
-            .setWelcomePageEnabled(Meeting.config.isWelcomePageEnabled)
-            */
             Meeting.features.forEach { value ->
                 options.setFeatureFlag(value.featureFlag.key, value.featureFlag.value)
             }
