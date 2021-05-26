@@ -25,7 +25,7 @@ class FeatureAdapter(context: Context, items: MutableList<FeatureAdapterItem>) :
                 "TAG_TAG",
                 "Position: $position , Item: ${getItem(position)}"
             )
-            // txtDescription.text = getItem(position).description
+            txtDescription.text = getItem(position).description
             checkBox.text = getItem(position).featureFlag.key
             checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
 

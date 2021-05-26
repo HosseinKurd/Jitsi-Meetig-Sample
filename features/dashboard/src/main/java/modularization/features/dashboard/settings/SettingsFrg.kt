@@ -48,6 +48,7 @@ class SettingsFrg : BaseFragmentBinding<SettingsViewDataBinding>() {
             /*findViewById<CheckBox>(R.id.chk_audio_only).setOnCheckedChangeListener { buttonView, isChecked ->
                 Meeting.config.isAudioOnly = isChecked
             }
+
             findViewById<CheckBox>(R.id.chk_audio_mute).setOnCheckedChangeListener { buttonView, isChecked ->
                 Meeting.config.isAudioMuted = isChecked
             }
