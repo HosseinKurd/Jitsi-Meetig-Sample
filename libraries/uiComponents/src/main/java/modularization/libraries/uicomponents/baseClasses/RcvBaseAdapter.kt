@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
  * Created by Kurdia.Epic on 5/12/2018.
  */
 abstract class RcvBaseAdapter<VH : RecyclerView.ViewHolder?, T> : RecyclerView.Adapter<VH> {
+
     constructor(context: Context, items: MutableList<T>) : super() {
         inflater = LayoutInflater.from(context)
         ctxAdapter = context

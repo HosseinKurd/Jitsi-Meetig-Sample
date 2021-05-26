@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -32,7 +31,6 @@ class SettingsFrg : BaseFragmentBinding<SettingsViewDataBinding>() {
 
     /** ViewModel related to Fragment*/
     private lateinit var viewModel: SettingsViewModel
-
 
     override fun getLayoutResourceId(): Int {
         return R.layout.fragment_settings

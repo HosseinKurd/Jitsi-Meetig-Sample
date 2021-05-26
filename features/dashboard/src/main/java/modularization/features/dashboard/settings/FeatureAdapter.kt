@@ -16,6 +16,7 @@ class FeatureAdapter(context: Context, items: MutableList<FeatureAdapterItem>) :
     RcvBaseAdapter<FeatureAdapter.ViewHolder, FeatureAdapterItem>(context, items) {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         private val txtDescription: MagicalTextView =
             itemView.findViewById(R.id.txt_feature_adapter)
         private val checkBox: CheckBox = itemView.findViewById(R.id.chk_feature_adapter)
