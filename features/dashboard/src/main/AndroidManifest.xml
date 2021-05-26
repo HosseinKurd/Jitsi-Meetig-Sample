@@ -3,6 +3,7 @@
     package="modularization.features.dashboard">
 
     <application>
+        <!--<activity android:name="modularization.features.dashboard.connecting.ConnectingActivity"/>-->
         <activity android:name=".DashboardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

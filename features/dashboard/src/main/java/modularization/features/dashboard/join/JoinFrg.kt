@@ -55,22 +55,49 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
     private fun onBroadcastReceived(intent: Intent?) {
         if (intent != null) {
             val event = BroadcastEvent(intent)
+            Logger.w(
+                TAG, "onBroadcastReceived event data : ${event.data}"
+            )
+            if (event.data.containsKey("senderId")) {
+                senderId = event.data!!.get("senderId").toString()
+            }
             when (event.type) {
-                BroadcastEvent.Type.CONFERENCE_JOINED -> Logger.w(
-                    TAG, "Conference Joined with url : ${event.data.get("url")}"
-                )
-                BroadcastEvent.Type.PARTICIPANT_JOINED -> Logger.w(
-                    TAG, "Participant joined : ${event.data.get("name")}"
-                )
-                BroadcastEvent.Type.ENDPOINT_TEXT_MESSAGE_RECEIVED -> Logger.w(
-                    TAG, "Text message received : ${event.data.get("text")}"
-                )
-                BroadcastEvent.Type.CHAT_MESSAGE_RECEIVED -> Logger.w(
-                    TAG, "Chat message received : ${event.data.get("text")}"
-                )
-                else -> Logger.w(
-                    TAG, "Undefined joined : ${event.data}" + "\n" + "Type : ${event.type}}"
-                )
+                BroadcastEvent.Type.CONFERENCE_JOINED -> {
+                    Logger.w(
+                        TAG, "Conference Joined with url : ${event.data.get("url")}"
+                    )
+                    return
+                }
+                BroadcastEvent.Type.PARTICIPANT_JOINED -> {
+                    Logger.w(
+                        TAG, "Participant joined : ${event.data.get("name")}"
+                    )
+                    return
+                }
+                BroadcastEvent.Type.ENDPOINT_TEXT_MESSAGE_RECEIVED -> {
+                    Logger.w(
+                        TAG, "Text message received : ${event.data.get("text")}"
+                    )
+                    return
+                }
+                BroadcastEvent.Type.CHAT_MESSAGE_RECEIVED -> {
+                    Logger.w(
+                        TAG, "Chat message received : ${event.data.get("text")}"
+                    )
+                    return
+                }
+                BroadcastEvent.Type.CHAT_TOGGLED -> {
+                    Logger.w(
+                        TAG, "Chat toggled : ${event.data.get("text")}"
+                    )
+                    return
+                }
+                else -> {
+                    Logger.w(
+                        TAG, "Undefined joined : ${event.data}" + "\n" + "Type : ${event.type}}"
+                    )
+                    return
+                }
             }
         }
     }
@@ -334,6 +361,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             }
             // Launch the new activity with the given options. The launch() method takes care
             // of creating the required Intent and passing the options.
+            // ConnectingActivity.launch(requireContext(), options.build())
             JitsiMeetActivity.launch(requireContext(), options.build())
         }
     }
@@ -392,7 +420,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
     }
 
     private fun startChatCall() {
-        Logger.w(TAG, "FeatureFlags : $Meeting")
+        /*Logger.w(TAG, "FeatureFlags : $Meeting")
         if (edtMeeting.text.toString().isEmpty()) {
             Toast.makeText(requireContext(), R.string.empty_meeting_name, Toast.LENGTH_LONG).show()
         } else {
@@ -403,20 +431,21 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
                 .setAudioOnly(true)
                 .setAudioMuted(true)
                 .setRoom(edtMeeting.text.toString())
-            // Settings options
-            options.setFeatureFlag(FeatureFlags.chatEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.overflowMenuEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.WelcomePageEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.tileViewEnabled.key, true)
-            options.setFeatureFlag(FeatureFlags.pipEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.notificationsEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.meetingNameEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.calendarEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.inviteEnabled.key, false)
+                // Settings options
+                .setFeatureFlag(FeatureFlags.chatEnabled.key, false)
+                .setFeatureFlag(FeatureFlags.overflowMenuEnabled.key, false)
+                .setFeatureFlag(FeatureFlags.WelcomePageEnabled.key, false)
+                .setFeatureFlag(FeatureFlags.tileViewEnabled.key, true)
+                .setFeatureFlag(FeatureFlags.pipEnabled.key, false)
+                .setFeatureFlag(FeatureFlags.notificationsEnabled.key, false)
+                .setFeatureFlag(FeatureFlags.meetingNameEnabled.key, false)
+                .setFeatureFlag(FeatureFlags.calendarEnabled.key, false)
+                .setFeatureFlag(FeatureFlags.inviteEnabled.key, false)
             // Launch the new activity with the given options. The launch() method takes care
             // of creating the required Intent and passing the options.
             JitsiMeetActivity.launch(requireContext(), options.build())
-        }
+        }*/
+        sendMessage()
     }
 
     private fun onSettingsClicked() {
@@ -425,13 +454,10 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
     }
 
     private fun registerForBroadcastMessages() {
-
         Logger.w(
             TAG, "start registerForBroadcastMessages()"
         )
-
         val intentFilter = IntentFilter()
-
         for (type in BroadcastEvent.Type.values()) {
             intentFilter.addAction(type.action)
             Logger.w(
@@ -447,10 +473,19 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         super.onDestroy()
     }
 
+    private var senderId = ""
+
     private fun hangUp() {
         // Example for sending actions to JitsiMeetSDK
         val hangupBroadcastIntent: Intent = BroadcastIntentHelper.buildHangUpIntent()
-        LocalBroadcastManager.getInstance(org.webrtc.ContextUtils.getApplicationContext())
+        LocalBroadcastManager.getInstance(requireContext())
             .sendBroadcast(hangupBroadcastIntent)
+    }
+
+    private fun sendMessage() {
+        val intent: Intent =
+            BroadcastIntentHelper.buildSendChatMessageIntent("*", "Hiiiiii")
+        LocalBroadcastManager.getInstance(requireContext())
+            .sendBroadcast(intent)
     }
 }
