@@ -349,6 +349,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
             val options = JitsiMeetConferenceOptions.Builder().setRoom(edtMeeting.text.toString())
+                .setUserInfo(getJitsiMeetUserInfo())
             // Settings for audio and video
             /*
             .setAudioOnly(Meeting.config.isAudioOnly)
@@ -366,6 +367,14 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         }
     }
 
+    private fun getJitsiMeetUserInfo(): JitsiMeetUserInfo {
+        return JitsiMeetUserInfo().apply {
+            email="h.kurd@vasl.ir"
+            displayName = "Kaveh Kurd"
+            avatar = URL("https://media.isna.ir/content/1415692213741_555.jpg/3")
+        }
+    }
+
     private fun startVideoCall() {
         Logger.w(TAG, "FeatureFlags : $Meeting")
         if (edtMeeting.text.toString().isEmpty()) {
@@ -374,6 +383,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
             val options = JitsiMeetConferenceOptions.Builder()
+                .setUserInfo(getJitsiMeetUserInfo())
                 .setWelcomePageEnabled(false)
                 .setRoom(edtMeeting.text.toString())
             // Settings options
@@ -400,6 +410,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
             val options = JitsiMeetConferenceOptions.Builder()
+                .setUserInfo(getJitsiMeetUserInfo())
                 .setWelcomePageEnabled(false)
                 .setAudioOnly(true)
                 .setRoom(edtMeeting.text.toString())
@@ -427,6 +438,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
             val options = JitsiMeetConferenceOptions.Builder()
+                .setUserInfo(getJitsiMeetUserInfo())
                 .setWelcomePageEnabled(false)
                 .setAudioOnly(true)
                 .setAudioMuted(true)
