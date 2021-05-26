@@ -35,8 +35,7 @@ android {
             enabled = true
         }
     }
-    ndkVersion '21.0.6113669'
-    // ndkVersion '22.0.6917172 rc1'
+    ndkVersion '22.0.6917172'
 }
 
 dependencies {
