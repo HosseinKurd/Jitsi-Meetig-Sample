@@ -3,4 +3,9 @@
     <string name="share_using">Share Via :</string>
     <string name="share_text">Color is : %1$s</string>
     <string name="jitsi_server">https://jitsi.tarhvareh.com</string>
+    <string name="submit_default">START DEFAULT CALL</string>
+    <string name="submit_video_call">START VIDEO CALL</string>
+    <string name="submit_voice_call">START VOICE CALL</string>
+    <string name="hint_enter_room_name">ENTER ROOM NAME</string>
+    <string name="submit_chat">START CHAT</string>
 </resources>

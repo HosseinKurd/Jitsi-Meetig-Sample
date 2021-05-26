@@ -1,6 +1,7 @@
 package modularization.libraries.dataSource.models
 
 object FeatureFlags {
+
     /**
      * Flag indicating if add-people functionality should be enabled.
      * Default: enabled (true).

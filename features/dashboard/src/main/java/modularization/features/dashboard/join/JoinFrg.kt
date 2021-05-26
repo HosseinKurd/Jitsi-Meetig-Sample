@@ -5,12 +5,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.hardware.camera2.*
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import modularization.features.dashboard.R
 import modularization.features.dashboard.configs.Meeting
@@ -21,10 +20,8 @@ import modularization.libraries.uicomponents.MagicalEditText
 import modularization.libraries.uicomponents.baseClasses.BaseFragmentBinding
 import modularization.libraries.utils.Logger
 import org.jitsi.meet.sdk.*
-import pl.aprilapps.easyphotopicker.*
 import java.net.MalformedURLException
 import java.net.URL
-import java.util.*
 
 
 class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
@@ -78,11 +75,6 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         }
     }
 
-    override fun onDestroy() {
-        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadcastReceiver)
-        super.onDestroy()
-    }
-
     override fun getLayoutResourceId(): Int {
         return R.layout.fragment_join
     }
@@ -93,15 +85,14 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(JoinViewModel::class.java)
         return inflater.inflate(layoutResourceId, container, false).apply {
             Meeting.features = getFeatures()
             edtMeeting = findViewById(R.id.edt_meeting)
             findViewById<View>(R.id.btn_submit).setOnClickListener { onSubmitClicked() }
+            findViewById<View>(R.id.btn_submit_video_call).setOnClickListener { startVideoCall() }
+            findViewById<View>(R.id.btn_submit_voice_call).setOnClickListener { startVoiceCall() }
+            findViewById<View>(R.id.btn_submit_chat).setOnClickListener { startChatCall() }
             findViewById<View>(R.id.btn_settings).setOnClickListener { onSettingsClicked() }
-            viewModel.liveData.observe(viewLifecycleOwner, Observer {
-                val item = it ?: return@Observer
-            })
             initJitsi()
         }
     }
@@ -323,7 +314,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         registerForBroadcastMessages()
     }
 
-    fun onSubmitClicked() {
+    private fun onSubmitClicked() {
         Logger.w(TAG, "FeatureFlags : $Meeting")
         if (edtMeeting.text.toString().isEmpty()) {
             Toast.makeText(requireContext(), R.string.empty_meeting_name, Toast.LENGTH_LONG).show()
@@ -347,7 +338,88 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
         }
     }
 
-    fun onSettingsClicked() {
+    private fun startVideoCall() {
+        Logger.w(TAG, "FeatureFlags : $Meeting")
+        if (edtMeeting.text.toString().isEmpty()) {
+            Toast.makeText(requireContext(), R.string.empty_meeting_name, Toast.LENGTH_LONG).show()
+        } else {
+            // Build options object for joining the conference. The SDK will merge the default
+            // one we set earlier and this one when joining.
+            val options = JitsiMeetConferenceOptions.Builder()
+                .setWelcomePageEnabled(false)
+                .setRoom(edtMeeting.text.toString())
+            // Settings options
+            options.setFeatureFlag(FeatureFlags.chatEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.overflowMenuEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.WelcomePageEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.tileViewEnabled.key, true)
+            options.setFeatureFlag(FeatureFlags.pipEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.notificationsEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.meetingNameEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.calendarEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.inviteEnabled.key, false)
+            // Launch the new activity with the given options. The launch() method takes care
+            // of creating the required Intent and passing the options.
+            JitsiMeetActivity.launch(requireContext(), options.build())
+        }
+    }
+
+    private fun startVoiceCall() {
+        Logger.w(TAG, "FeatureFlags : $Meeting")
+        if (edtMeeting.text.toString().isEmpty()) {
+            Toast.makeText(requireContext(), R.string.empty_meeting_name, Toast.LENGTH_LONG).show()
+        } else {
+            // Build options object for joining the conference. The SDK will merge the default
+            // one we set earlier and this one when joining.
+            val options = JitsiMeetConferenceOptions.Builder()
+                .setWelcomePageEnabled(false)
+                .setAudioOnly(true)
+                .setRoom(edtMeeting.text.toString())
+            // Settings options
+            options.setFeatureFlag(FeatureFlags.chatEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.overflowMenuEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.WelcomePageEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.tileViewEnabled.key, true)
+            options.setFeatureFlag(FeatureFlags.pipEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.notificationsEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.meetingNameEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.calendarEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.inviteEnabled.key, false)
+            // Launch the new activity with the given options. The launch() method takes care
+            // of creating the required Intent and passing the options.
+            JitsiMeetActivity.launch(requireContext(), options.build())
+        }
+    }
+
+    private fun startChatCall() {
+        Logger.w(TAG, "FeatureFlags : $Meeting")
+        if (edtMeeting.text.toString().isEmpty()) {
+            Toast.makeText(requireContext(), R.string.empty_meeting_name, Toast.LENGTH_LONG).show()
+        } else {
+            // Build options object for joining the conference. The SDK will merge the default
+            // one we set earlier and this one when joining.
+            val options = JitsiMeetConferenceOptions.Builder()
+                .setWelcomePageEnabled(false)
+                .setAudioOnly(true)
+                .setAudioMuted(true)
+                .setRoom(edtMeeting.text.toString())
+            // Settings options
+            options.setFeatureFlag(FeatureFlags.chatEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.overflowMenuEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.WelcomePageEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.tileViewEnabled.key, true)
+            options.setFeatureFlag(FeatureFlags.pipEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.notificationsEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.meetingNameEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.calendarEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.inviteEnabled.key, false)
+            // Launch the new activity with the given options. The launch() method takes care
+            // of creating the required Intent and passing the options.
+            JitsiMeetActivity.launch(requireContext(), options.build())
+        }
+    }
+
+    private fun onSettingsClicked() {
         if (requireActivity() is OnNavigate)
             (requireActivity() as OnNavigate).onNavigated(2)
     }
@@ -360,14 +432,6 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
 
         val intentFilter = IntentFilter()
 
-        /*
-        This registers for every possible event sent from JitsiMeetSDK
-           If only some of the events are needed, the for loop can be replaced
-           with individual statements:
-           ex:  intentFilter.addAction(BroadcastEvent.Type.AUDIO_MUTED_CHANGED.action);
-                intentFilter.addAction(BroadcastEvent.Type.CONFERENCE_TERMINATED.action);
-                ... other events
-        */
         for (type in BroadcastEvent.Type.values()) {
             intentFilter.addAction(type.action)
             Logger.w(
@@ -378,8 +442,13 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             .registerReceiver(broadcastReceiver, intentFilter)
     }
 
-    // Example for sending actions to JitsiMeetSDK
+    override fun onDestroy() {
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadcastReceiver)
+        super.onDestroy()
+    }
+
     private fun hangUp() {
+        // Example for sending actions to JitsiMeetSDK
         val hangupBroadcastIntent: Intent = BroadcastIntentHelper.buildHangUpIntent()
         LocalBroadcastManager.getInstance(org.webrtc.ContextUtils.getApplicationContext())
             .sendBroadcast(hangupBroadcastIntent)
