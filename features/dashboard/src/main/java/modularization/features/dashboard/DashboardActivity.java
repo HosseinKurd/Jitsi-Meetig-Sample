@@ -29,6 +29,7 @@ public class DashboardActivity extends AppCompatActivity implements OnNavigate {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        setSupportActionBar(findViewById(R.id.toolbar));
 
         onNavigated(1);
     }

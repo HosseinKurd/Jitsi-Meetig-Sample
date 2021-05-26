@@ -393,30 +393,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
 
     private fun startChatCall() {
         Logger.w(TAG, "FeatureFlags : $Meeting")
-        if (edtMeeting.text.toString().isEmpty()) {
-            Toast.makeText(requireContext(), R.string.empty_meeting_name, Toast.LENGTH_LONG).show()
-        } else {
-            // Build options object for joining the conference. The SDK will merge the default
-            // one we set earlier and this one when joining.
-            val options = JitsiMeetConferenceOptions.Builder()
-                .setWelcomePageEnabled(false)
-                .setAudioOnly(true)
-                .setAudioMuted(true)
-                .setRoom(edtMeeting.text.toString())
-            // Settings options
-            options.setFeatureFlag(FeatureFlags.chatEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.overflowMenuEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.WelcomePageEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.tileViewEnabled.key, true)
-            options.setFeatureFlag(FeatureFlags.pipEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.notificationsEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.meetingNameEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.calendarEnabled.key, false)
-            options.setFeatureFlag(FeatureFlags.inviteEnabled.key, false)
-            // Launch the new activity with the given options. The launch() method takes care
-            // of creating the required Intent and passing the options.
-            JitsiMeetActivity.launch(requireContext(), options.build())
-        }
+        Toast.makeText(context, "UNDER DEVELOP", Toast.LENGTH_SHORT).show()
     }
 
     private fun onSettingsClicked() {
