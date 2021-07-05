@@ -23,7 +23,6 @@ import org.jitsi.meet.sdk.*
 import java.net.MalformedURLException
 import java.net.URL
 
-
 class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
 
     companion object {
@@ -334,6 +333,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             //.setFeatureFlag("toolbox.enabled", false)
             //.setFeatureFlag("filmstrip.enabled", false)
             .setWelcomePageEnabled(false)
+            .setContext(context)
             .build()
 
         JitsiMeet.setDefaultConferenceOptions(defaultOptions)
@@ -351,12 +351,6 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             val options = JitsiMeetConferenceOptions.Builder().setRoom(edtMeeting.text.toString())
                 .setUserInfo(getJitsiMeetUserInfo())
             // Settings for audio and video
-            /*
-            .setAudioOnly(Meeting.config.isAudioOnly)
-            .setAudioMuted(Meeting.config.isAudioMuted)
-            .setVideoMuted(Meeting.config.isVideoMuted)
-            .setWelcomePageEnabled(Meeting.config.isWelcomePageEnabled)
-            */
             Meeting.features.forEach { value ->
                 options.setFeatureFlag(value.featureFlag.key, value.featureFlag.value)
             }
@@ -369,7 +363,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
 
     private fun getJitsiMeetUserInfo(): JitsiMeetUserInfo {
         return JitsiMeetUserInfo().apply {
-            email="h.kurd@vasl.ir"
+            email = "h.kurd@vasl.ir"
             displayName = "Kaveh Kurd"
             avatar = URL("https://media.isna.ir/content/1415692213741_555.jpg/3")
         }
@@ -385,6 +379,9 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             val options = JitsiMeetConferenceOptions.Builder()
                 .setUserInfo(getJitsiMeetUserInfo())
                 .setWelcomePageEnabled(false)
+                .setContext(context)
+                .setUsername("reza")
+                .setPassword("123456")
                 .setRoom(edtMeeting.text.toString())
             // Settings options
             options.setFeatureFlag(FeatureFlags.chatEnabled.key, false)
@@ -395,6 +392,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
             options.setFeatureFlag(FeatureFlags.notificationsEnabled.key, false)
             options.setFeatureFlag(FeatureFlags.meetingNameEnabled.key, false)
             options.setFeatureFlag(FeatureFlags.calendarEnabled.key, false)
+            options.setFeatureFlag(FeatureFlags.inviteEnabled.key, false)
             options.setFeatureFlag(FeatureFlags.inviteEnabled.key, false)
             // Launch the new activity with the given options. The launch() method takes care
             // of creating the required Intent and passing the options.
