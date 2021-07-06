@@ -316,8 +316,7 @@ class JoinFrg : BaseFragmentBinding<JoinViewDataBinding>() {
 
     private fun initJitsi() {
         // Initialize default options for Jitsi Meet conferences.
-        val serverURL: URL
-        serverURL = try {
+        val serverURL: URL = try {
             // When using JaaS, replace "https://meet.jit.si" with the proper serverURL
             URL(getString(R.string.jitsi_server))
             // URL("https://meet.jit.si")

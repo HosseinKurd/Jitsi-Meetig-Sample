@@ -1,4 +1,4 @@
-package modularization.features.dashboard.models
+package ir.vasl.simulator.model
 
 class MessageModel(val id: Int, val username: String, val message: String) {
 

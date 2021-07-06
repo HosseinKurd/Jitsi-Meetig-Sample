@@ -1,14 +1,15 @@
-package modularization.features.dashboard.adapters
+package ir.vasl.simulator.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import modularization.features.dashboard.R
-import modularization.features.dashboard.models.MessageModel
+import ir.vasl.simulator.R
+import ir.vasl.simulator.model.MessageModel
 
-class MessagesAdapter(private val messages: ArrayList<MessageModel>) : RecyclerView.Adapter<MessagesAdapter.ViewHolder>() {
+class MessagesAdapter(private val messages: ArrayList<MessageModel>) :
+    RecyclerView.Adapter<MessagesAdapter.ViewHolder>() {
 
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
@@ -36,7 +37,7 @@ class MessagesAdapter(private val messages: ArrayList<MessageModel>) : RecyclerV
         val message: MessageModel = messages[position]
         // Set item views based on your views and data model
         val textView = viewHolder.messageTextView
-        textView.setText(message.message)
+        textView.text = message.message
 
         // val button = viewHolder.messageButton
         // button.text = if (contact.isOnline) "Message" else "Offline"
@@ -46,6 +47,12 @@ class MessagesAdapter(private val messages: ArrayList<MessageModel>) : RecyclerV
     // Returns the total count of items in the list
     override fun getItemCount(): Int {
         return messages.size
+    }
+
+    // Add new item into message list
+    fun addNewMessage(messageModel: MessageModel) {
+        messages.add(messageModel)
+        notifyDataSetChanged()
     }
 
 }

@@ -1,6 +1,8 @@
 rootProject.name = "Jitsi Meetig Sample"
+
 include ':app'
 
+include ':features:simulator'
 include ':features:dashboard'
 
 include ':libraries:dataSource'

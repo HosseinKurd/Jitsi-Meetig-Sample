@@ -11,8 +11,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initApplication()
-
-        // MagicalNavigator.getInstance().navigateToSplashActivity(this)
     }
 
     private fun initApplication() {
@@ -22,7 +20,6 @@ class App : Application() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         LocaleHelper.setLocale(applicationContext, LocaleHelper.getPersistedLocale(this))
-
     }
 
     override fun attachBaseContext(base: Context?) {

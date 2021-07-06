@@ -9,7 +9,7 @@
         android:id="@+id/imageView_avatar"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="#E91E63"
+        android:src="@drawable/round_shape_avatar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

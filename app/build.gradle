@@ -43,6 +43,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation project(path: ':features:dashboard')
+    implementation project(path: ':features:simulator')
 
     implementation project(path: ':libraries:dataSource')
     implementation project(path: ':libraries:models')
